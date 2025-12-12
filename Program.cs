@@ -1,16 +1,17 @@
 ﻿internal class Program
 {
-    static string[] naves = new string[100];
+    static string[] naves = new string[10];
     static int contadornave = 0;
 
 
     private static void Main(string[] args)
     {
         int opcion = 0;
-        Random random = new Random();
 
         do
         {
+            Console.WriteLine();
+            Console.WriteLine("=== SISTEMA DE FABRICACIÓN DE NAVES ESTELARES ===");
             Console.WriteLine("Seleccione una opción:");
             Console.WriteLine("1.Crear nueva nave");
             Console.WriteLine("2.Cambiar nombre de una nave");
@@ -19,6 +20,7 @@
             Console.WriteLine("5.Eliminar todas las naves");
             Console.WriteLine("6.Salir");
             opcion = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
 
             switch (opcion)
             {
@@ -26,15 +28,16 @@
                     CrearNave();
                     break;
                 case 2:
-
+                    CambiarNombreNave();
                     break;
                 case 3:
-
+                    MostrarNaves();
                     break;
                 case 4:
-
+                    EliminarNave();
                     break;
                 case 5:
+                    EliminarTodo();
 
                     break;
                 case 6:
@@ -45,9 +48,6 @@
                     break;
             }
 
-
-
-
         } while (opcion != 6);
 
     }
@@ -55,7 +55,7 @@
     {
         if (contadornave <= naves.Length)
         {
-            string[] palabras = new string[]
+            string[] palabras =
             {
                 "HALCONMILENARIO",
                 "CAZAESTELAR",
@@ -64,49 +64,112 @@
                 "XWING"
             };
 
-
             Random random = new Random();
             string nombreNave = palabras[random.Next(palabras.Length)];
             int numeronave = random.Next(10, 99);
 
             string nombreCompletoNave = $"{nombreNave}-{numeronave}";
 
-            Console.WriteLine($"Nave creada: {nombreCompletoNave}");
+            Console.WriteLine($"✓ Nave creada: {nombreCompletoNave}");
             naves[contadornave] = nombreCompletoNave;
-            contadornave++;
             Console.WriteLine();
+            contadornave++;
         }
         else
         {
             Console.WriteLine("No se puede generar mas naves");
         }
     }
-    
+
     static void CambiarNombreNave()
     {
-        Console.WriteLine("Dime la posicion de la nave (emieza por 0)");
-        int posicionActual = Convert.ToInt32(Console.ReadLine()) ;
-
-
-
-        if (posicionActual == contadornave)
+        if (contadornave <= 0)
         {
-            Console.WriteLine("Dime el nombre nuevo de la nave (solo palabras)");
-            string nuevonombre = Console.ReadLine();
-
-            Console.WriteLine("Dime el numero nuevo para la nave(Solo Numero)");
-            int nuevonumero = Convert.ToInt32(Console.ReadLine());
-
-            string nuevonombrecompleto = $"{nuevonombre}-{nuevonumero}";
-
-            naves[posicionActual] = nuevonombrecompleto;
-
-            Console.WriteLine($"Nuevo nombre completo es: {nuevonombrecompleto}");
+            Console.WriteLine("No hay naves para renombrar");
         }
         else
         {
-            Console.WriteLine("No hay nave en esta posicion");
+            Console.WriteLine("Dime la posicion de la nave (emieza por 0)");
+            int posicionActual = Convert.ToInt32(Console.ReadLine());
+
+            string nombreActual = naves[posicionActual];
+
+            if (posicionActual < 0 || posicionActual >= contadornave)
+            {
+                Console.WriteLine("Posicion invalida");
+            }
+            else
+            {
+                Console.WriteLine("Dime el nombre nuevo de la nave (solo palabras)");
+                string nuevonombre = Console.ReadLine();
+
+                Console.WriteLine("Dime el numero nuevo para la nave(Solo Numero)");
+                int nuevonumero = Convert.ToInt32(Console.ReadLine());
+
+                string nuevonombrecompleto = $"{nuevonombre}-{nuevonumero}";
+
+                naves[posicionActual] = nuevonombrecompleto;
+
+                Console.WriteLine($"✓ Nave renombrada: {nombreActual} → {nuevonombrecompleto}");
+
+            }
         }
-        
+
+
+
+
+
+    }
+
+    static void MostrarNaves()
+    {
+        Console.WriteLine("=== NAVES FABRICADAS ===");
+        for (int i = 0; i < naves.Length; i++)
+        {
+            if (naves[i] != null)
+            {
+                Console.WriteLine($"[{i}] {naves[i]}");
+            }
+        }
+        Console.WriteLine();
+    }
+
+    static void EliminarNave()
+    {
+        if (contadornave <= 0)
+        {
+            Console.WriteLine("No hay naves para eliminar");
+        }
+        else
+        {
+            Console.WriteLine("Dime la posicion de la nave que quieres eliminar");
+            int posicion = Convert.ToInt32(Console.ReadLine());
+
+            naves[posicion] = "";
+
+            contadornave--;
+
+            Console.WriteLine("=== NAVES ACTULIZADOS ===");
+            for (int i = 0; i < naves.Length; i++)
+            {
+                if (naves[i] != null)
+                {
+                    Console.WriteLine($"[{i}] {naves[i]}");
+                }
+            }
+            Console.WriteLine();
+        }
+
+    }
+
+    static void EliminarTodo()
+    {
+        Console.WriteLine("=== ELIMINANDO TODAS LAS NAVES ===");
+        for (int i = 0; i < naves.Length; i++)
+        {
+            naves[i] = null;
+        }
+        Console.WriteLine("✓ Todos naves eliminados");
+        contadornave = 0;
     }
 }
