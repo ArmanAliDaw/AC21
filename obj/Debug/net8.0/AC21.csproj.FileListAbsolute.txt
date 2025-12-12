@@ -12,3 +12,4 @@ C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Deb
 C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.pdb
 C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.genruntimeconfig.cache
 C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\ref\AC21.dll
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.sourcelink.json

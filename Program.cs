@@ -1,7 +1,7 @@
 ﻿internal class Program
 {
     static string[] naves = new string[100];
-    int contadornave = 0;
+    static int contadornave = 0;
 
 
     private static void Main(string[] args)
@@ -53,38 +53,60 @@
     }
     static void CrearNave()
     {
-        string[] palabras = new string[]
+        if (contadornave <= naves.Length)
         {
-            "HALCONMILENARIO",
-            "CAZAESTELAR",
-            "SUPERDESTRUCTOR",
-            "YWING",
-            "XWING"
-        };
-        Random random = new Random();
-        string nombreNave = palabras[random.Next(palabras.Length)];
+            string[] palabras = new string[]
+            {
+                "HALCONMILENARIO",
+                "CAZAESTELAR",
+                "SUPERDESTRUCTOR",
+                "YWING",
+                "XWING"
+            };
 
-        int numeronave = random.Next(10, 99);
 
-        string nombreCompletoNave = $"{nombreNave}-{numeronave}";
+            Random random = new Random();
+            string nombreNave = palabras[random.Next(palabras.Length)];
+            int numeronave = random.Next(10, 99);
 
-        Console.WriteLine($"Nave creada: {nombreCompletoNave}");
-        Console.WriteLine();
+            string nombreCompletoNave = $"{nombreNave}-{numeronave}";
+
+            Console.WriteLine($"Nave creada: {nombreCompletoNave}");
+            naves[contadornave] = nombreCompletoNave;
+            contadornave++;
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.WriteLine("No se puede generar mas naves");
+        }
     }
+    
     static void CambiarNombreNave()
     {
-        Console.WriteLine("Dime el nombre actual de la nave");
-        string nombreActual = Console.ReadLine();
+        Console.WriteLine("Dime la posicion de la nave (emieza por 0)");
+        int posicionActual = Convert.ToInt32(Console.ReadLine()) ;
 
-        foreach (var nave in naves)
+
+
+        if (posicionActual == contadornave)
         {
-            if (nombreActual == nave)
-            {
-                Console.WriteLine("Dime el nombre nuevo de la nave y su numero");
-                string nuevonombre = Console.ReadLine();
+            Console.WriteLine("Dime el nombre nuevo de la nave (solo palabras)");
+            string nuevonombre = Console.ReadLine();
 
-                Console.WriteLine($"Nuevo nombre completo es: {nuevonombre}");
-            }
+            Console.WriteLine("Dime el numero nuevo para la nave(Solo Numero)");
+            int nuevonumero = Convert.ToInt32(Console.ReadLine());
+
+            string nuevonombrecompleto = $"{nuevonombre}-{nuevonumero}";
+
+            naves[posicionActual] = nuevonombrecompleto;
+
+            Console.WriteLine($"Nuevo nombre completo es: {nuevonombrecompleto}");
         }
+        else
+        {
+            Console.WriteLine("No hay nave en esta posicion");
+        }
+        
     }
 }
