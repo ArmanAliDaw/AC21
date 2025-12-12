@@ -1,0 +1,14 @@
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\bin\Debug\net8.0\AC21.exe
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\bin\Debug\net8.0\AC21.deps.json
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\bin\Debug\net8.0\AC21.runtimeconfig.json
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\bin\Debug\net8.0\AC21.dll
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\bin\Debug\net8.0\AC21.pdb
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.AssemblyInfoInputs.cache
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.AssemblyInfo.cs
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.csproj.CoreCompileInputs.cache
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.dll
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\refint\AC21.dll
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.pdb
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\AC21.genruntimeconfig.cache
+C:\Users\iamar\Desktop\DocumentosGithub\Programacion-Proyecto_Final\AC21\obj\Debug\net8.0\ref\AC21.dll
