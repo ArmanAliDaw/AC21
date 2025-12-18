@@ -3,9 +3,19 @@
     static string[] naves = new string[10];
     static int contadornave = 0;
 
+    static string[] palabras =
+    {
+        "HALCONMILENARIO",
+        "CAZAESTELAR",
+        "SUPERDESTRUCTOR",
+        "YWING",
+        "XWING"
+    };
+
 
     private static void Main(string[] args)
     {
+
         int opcion = 0;
 
         do
@@ -25,19 +35,19 @@
             switch (opcion)
             {
                 case 1:
-                    CrearNave();
+                    CrearNave(ref contadornave);
                     break;
                 case 2:
                     CambiarNombreNave();
                     break;
                 case 3:
-                    MostrarNaves();
+                    MostrarNaves(ref contadornave);
                     break;
                 case 4:
-                    EliminarNave();
+                    EliminarNave(ref contadornave);
                     break;
                 case 5:
-                    EliminarTodo();
+                    EliminarTodo(ref contadornave);
 
                     break;
                 case 6:
@@ -51,19 +61,10 @@
         } while (opcion != 6);
 
     }
-    static void CrearNave()
+    static void CrearNave(ref int contadornave)
     {
         if (contadornave <= naves.Length)
         {
-            string[] palabras =
-            {
-                "HALCONMILENARIO",
-                "CAZAESTELAR",
-                "SUPERDESTRUCTOR",
-                "YWING",
-                "XWING"
-            };
-
             Random random = new Random();
             string nombreNave = palabras[random.Next(palabras.Length)];
             int numeronave = random.Next(10, 99);
@@ -100,13 +101,14 @@
             }
             else
             {
-                Console.WriteLine("Dime el nombre nuevo de la nave (solo palabras)");
-                string nuevonombre = Console.ReadLine();
 
-                Console.WriteLine("Dime el numero nuevo para la nave(Solo Numero)");
-                int nuevonumero = Convert.ToInt32(Console.ReadLine());
 
-                string nuevonombrecompleto = $"{nuevonombre}-{nuevonumero}";
+                Random random = new Random();
+                string nombreNave = palabras[random.Next(palabras.Length)];
+                int numeronave = random.Next(10, 99);
+
+
+                string nuevonombrecompleto = $"{nombreNave}-{numeronave}";
 
                 naves[posicionActual] = nuevonombrecompleto;
 
@@ -121,20 +123,28 @@
 
     }
 
-    static void MostrarNaves()
+    static void MostrarNaves(ref int contadornave , string titulo = "=== NAVES FABRICADAS ===")
     {
-        Console.WriteLine("=== NAVES FABRICADAS ===");
-        for (int i = 0; i < naves.Length; i++)
+        if (contadornave <= 0)
         {
-            if (naves[i] != null)
-            {
-                Console.WriteLine($"[{i}] {naves[i]}");
-            }
+            Console.WriteLine("\n✗ No hay naves fabricadas.");
         }
-        Console.WriteLine();
+        else
+        {
+            Console.WriteLine(titulo);
+            for (int i = 0; i < naves.Length; i++)
+            {
+                if (naves[i] != null)
+                {
+                    Console.WriteLine($"[{i}] {naves[i]}");
+                }
+            }
+            Console.WriteLine();
+        }
+        
     }
 
-    static void EliminarNave()
+    static void EliminarNave(ref int contadornave)
     {
         if (contadornave <= 0)
         {
@@ -162,14 +172,39 @@
 
     }
 
-    static void EliminarTodo()
+    static void EliminarTodo(ref int contadornave , bool mostrarConfirmacion = true)
     {
-        Console.WriteLine("=== ELIMINANDO TODAS LAS NAVES ===");
-        for (int i = 0; i < naves.Length; i++)
+        if (contadornave == 0)
         {
-            naves[i] = null;
+            Console.WriteLine("✗ No hay naves para eliminar.");
         }
-        Console.WriteLine("✓ Todos naves eliminados");
-        contadornave = 0;
+        if (mostrarConfirmacion)
+        {
+            Console.Write($"\n¿Está seguro de eliminar todas las {contadornave} naves? (S/N): ");
+            string respuesta = Console.ReadLine();
+
+            if (respuesta == "S" || respuesta == "s")
+            {
+                Console.WriteLine("=== ELIMINANDO TODAS LAS NAVES ===");
+                for (int i = 0; i < naves.Length; i++)
+                {
+                    naves[i] = null;
+                }
+                Console.WriteLine("✓ Todos naves eliminados");
+                contadornave = 0;
+            }
+            else
+            {
+                Console.WriteLine("Operación cancelada.");
+            }
+        }
+        
+        
     }
 }
+
+
+
+
+
+
